@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="stylepage.css">
+</head>
+<body>
+    <!-- About Us Page -->
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="techhero.html">Tech Hero</a></li>
+            <li><a href="machine.html">Machines</a></li>
+        </ul>
+    </nav>
+
+    <section class="about-section">
+        <h2>Team Members</h2>
+        <ul>
+            <li><a href="#" class="profile-link" data-person="jiao">Jiao Jin</a></li>
+            <li><a href="#" class="profile-link" data-person="yankaiqi">Yankaiqi Li</a></li>
+            <li><a href="#" class="profile-link" data-person="xu">Xu Liu</a></li>
+        </ul>
+
+        
+        <p>Hover over a name to see the portrait!</p>
+        
+
+        <!-- Self-Introduction Sections (initially hidden) -->
+        <div class="intro-section" id="intro-jiao" style="display:none;">
+            <img src="pics/JiaoJin.jpg" alt="Jiao Jin's Photo" class="profile-photo">
+            <div class="about-text">
+                <h2>Hi, I'm Jiao Jin.</h2>
+                <p>I'm currently a graduate student at the University of Wisconsin-Madison, working on my MS in Information.</p>
+                <p>I'm really interested in how technology connects with society, especially when it comes to issues like inequality and bias. I believe technology plays a huge role in shaping these issues, whether intentionally or not.</p>
+                <p>Email: jjin22@wisc.edu</p>
+            </div>
+        </div>
+
+        <div class="intro-section" id="intro-yankaiqi" style="display:none;">
+            <img src="pics/YankaiqiLi.jpg" alt="Yankaiqi Li's Photo" class="profile-photo">
+            <div class="about-text">
+                <h2>Hello, I'm Yankaiqi Li.</h2>
+                <p>I'm currently a student in the MS Information program. I am now in my second year of study.</p>
+                <p>I chose this class because the content aligns with my research interests. I'm really into exploring different things and seeing how people react to them. I enjoy working with simulation devices—they might seem quirky, but I find them fascinating.</p>
+                <p>Email: li2677@wisc.edu</p>
+            </div>
+        </div>
+
+        <div class="intro-section" id="intro-xu" style="display:none;">
+            <img src="pics/xuliu.jpg" alt="Xu Liu's Photo" class="profile-photo">
+            <div class="about-text">
+                <h2>Hello, my name is Xu Liu.</h2>
+                <p>I'm currently a student in the MS Information program. I am from Chengdu, China. I am currently in the second year of my graduate program and after I graduate I would like to become a developer.</p>
+                <p>This course is a great fit for my career, and I hope to have the opportunity to discuss and share it with you. I like to travel a lot outside of school—it's a great way to gain insights, and my last trip was to Seattle, USA, which was by far the most memorable city in the US.</p>
+                <p>Email: xliu2358@wisc.edu</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Jiao Jin, Yankaiqi Li and Xu Liu's Projects. </p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.profile-link').forEach(link => {
+            link.addEventListener('mouseenter', function () {
+                const person = this.getAttribute('data-person');
+                const introSections = document.querySelectorAll('.intro-section');
+
+                // Hide all intro sections initially
+                introSections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Display the corresponding intro section
+                document.getElementById(`intro-${person}`).style.display = 'block';
+            });
+
+            link.addEventListener('mouseleave', function () {
+                // Hide the introduction section after hover ends
+                document.getElementById(`intro-${this.getAttribute('data-person')}`).style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
