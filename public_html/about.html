@@ -12,15 +12,17 @@
         <h1>About Us</h1>
     </header>
 
-    <nav>
+    <nav class="vertical-nav">
         <ul>
             <li><a href="index1.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="resources.html">Resources</a></li>
             <li><a href="techhero.html">Tech Hero</a></li>
+            <li><a href="project statement.html">Project Statement</a></li>
             <li><a href="machine.html">Machines</a></li>
         </ul>
     </nav>
+    
 
     <section class="about-section">
         <h2>Team Members</h2>
@@ -31,7 +33,7 @@
         </ul>
 
         
-        <p>Hover over a name to see the portrait!</p>
+        <p>Click on a name to see who we are!</p>
         
 
         <!-- Self-Introduction Sections (initially hidden) -->
@@ -73,24 +75,27 @@
 
     <script>
         document.querySelectorAll('.profile-link').forEach(link => {
-            link.addEventListener('mouseenter', function () {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                
                 const person = this.getAttribute('data-person');
-                const introSections = document.querySelectorAll('.intro-section');
-
-                // Hide all intro sections initially
-                introSections.forEach(section => {
-                    section.style.display = 'none';
-                });
-
-                // Display the corresponding intro section
-                document.getElementById(`intro-${person}`).style.display = 'block';
-            });
-
-            link.addEventListener('mouseleave', function () {
-                // Hide the introduction section after hover ends
-                document.getElementById(`intro-${this.getAttribute('data-person')}`).style.display = 'none';
+                const targetSection = document.getElementById(`intro-${person}`);
+                
+                // Toggle visibility
+                if (targetSection.style.display === 'none' || !targetSection.style.display) {
+                    // Hide other sections
+                    document.querySelectorAll('.intro-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    // Show the clicked section
+                    targetSection.style.display = 'block';
+                } else {
+                    // Hide the section if it's already visible
+                    targetSection.style.display = 'none';
+                }
             });
         });
     </script>
+    
 </body>
 </html>
